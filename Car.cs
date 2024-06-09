@@ -58,10 +58,19 @@ namespace CarsLibrary
         {
             bool isOccupied = false;
             int n;
+            int counter = 0;
+            const int maxCounter = 50;
+            int exp = 2;
             do
             {
-                n = rnd.Next(0, 1000);
+                if (counter > maxCounter)
+                {
+                    counter = 0;
+                    exp++;
+                }
+                n = rnd.Next(0, (int)Math.Pow(10, exp));
                 isOccupied = occupied_numbers.Contains(n);
+                counter++;
             } while (isOccupied);
             Number = n;
         }
